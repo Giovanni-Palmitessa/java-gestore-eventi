@@ -65,16 +65,25 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        // dopo aver creato l'evento chiedo quanti posti vuole prenotare
-        System.out.println("Quante prenotazioni vuoi fare?");
-        int postiPrenotati = Integer.parseInt(scan.nextLine());
+        // dopo aver creato l'evento chiedo se vuole prenotare un posto
+        if (evento != null) {
+            System.out.println("Vuoi prenotare un posto? (Sì/No)");
+            String risposta = scan.nextLine();
+            // chiedo quanti posti vuoi prenotare
+            if (risposta.equalsIgnoreCase("Si")) {
+                System.out.println("Quante prenotazioni vuoi fare?");
+                int postiPrenotati = Integer.parseInt(scan.nextLine());
 
-        //aggiungo le prenotazioni
-        try {
-            evento.prenota(postiPrenotati);
-            System.out.println("Prenotazioni effettuate con successo!");
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+                //aggiungo le prenotazioni
+                try {
+                    evento.prenota(postiPrenotati);
+                    System.out.println("Prenotazioni effettuate con successo!");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                System.out.println("Nessuna prenotazione effettuata.");
+            }
         }
 
         //Chiudo lo scanner

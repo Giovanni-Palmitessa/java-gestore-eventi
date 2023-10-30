@@ -13,7 +13,7 @@ public class Evento {
     //Costruttore
     public Evento(String titolo, Date data, int postiTotali) throws IllegalArgumentException {
          if (!isTitoloValid(titolo)) {
-            throw new IllegalArgumentException("Il titolo non può essere una stringa vuota!");
+            throw new IllegalArgumentException("Inserisci un titolo valido!");
         }
         //controllo che i posti Totali siano numero positivo valido
         if (postiTotali <= 0) {
