@@ -56,6 +56,21 @@ public class Evento {
         if (numPrenotazioni > postiTotali - postiPrenotati) {
             throw new IllegalArgumentException("Non ci sono abbastanza posti disponibili per questo evento!");
         }
+        //Se controlli vanno bene aggiungi prenotazioni
         postiPrenotati += numPrenotazioni;
+    }
+
+    public void disdici(int numDisdette) throws IllegalArgumentException {
+        //controllo se data è valida
+        if (data.before(new Date())) {
+            throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
+        }
+        //controllo che ci siano abbastanza prenotazioni
+        if (numDisdette > postiPrenotati) {
+            throw new IllegalArgumentException("Non ci sono abbastanza prenotazioni da disdire!");
+        }
+        //se controlli vanno bene rimuovi posti
+        postiPrenotati -= numDisdette;
+
     }
 }
