@@ -15,27 +15,27 @@ public class Main {
         //titolo
         System.out.println("Inserisci il titolo dell'Evento: ");
         String titolo = scan.nextLine();
+        // posti Totali
+        System.out.println("Inserisci il numero di posti totali:");
+        int postiTotali = Integer.parseInt(scan.nextLine());
         //data
-        System.out.println("Inserisci la data dell'Evento: (formato: yyyy-mm-dd)");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date data = null;
-        //controllo se la data inserita è corretta
         try {
-            data = dateFormat.parse(scan.nextLine());
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return;
+            System.out.println("Inserisci la data dell'Evento: (formato: yyyy-MM-dd)");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = dateFormat.parse(scan.nextLine());
+
+            // Prova a creare l'oggetto Evento
+            Evento evento = new Evento(titolo, data, postiTotali);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
 
-        // posti Totali
-        System.out.println("Inserisci il numero di posti totali:");
-        int postiTotali = scan.nextInt();
 
         //creo il nuovo evento
-        Evento evento = new Evento(titolo, data, postiTotali);
+//        Evento evento = new Evento(titolo, data, postiTotali);
 
         //Chiudo lo scanner
         scan.close();
