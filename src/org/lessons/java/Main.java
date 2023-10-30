@@ -43,14 +43,20 @@ public class Main {
             System.out.println("Inserisci la data dell'Evento (formato: yyyy-MM-dd):");
             String dataString = scan.nextLine();
 
-            //controllo se utente mette stringa vuota
             if (dataString.isEmpty()) {
                 System.out.println("Errore: Devi inserire una data valida!");
             } else {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                dateFormat.setLenient(false);
+
                 try {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    data = dateFormat.parse(dataString);
-                    validInput = true;
+                    Date parsedDate = dateFormat.parse(dataString);
+                    if (parsedDate.before(new Date())) {
+                        System.out.println("Errore: La data dell'evento non può essere nel passato!");
+                    } else {
+                        data = parsedDate;
+                        validInput = true;
+                    }
                 } catch (java.text.ParseException e) {
                     System.out.println("Errore: Formato data non valido!");
                 }
@@ -84,7 +90,7 @@ public class Main {
                 //aggiungo le prenotazioni
                 try {
                     evento.prenota(postiPrenotati);
-                    System.out.println("Prenotazioni effettuate con successo!");
+                    System.out.println("Prenotazioni effettuate con successo!Hai prenotato " + postiPrenotati + " posto/i.Sono disponibili ancora: " + (postiTotali - postiPrenotati) + " posto/i." );
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
