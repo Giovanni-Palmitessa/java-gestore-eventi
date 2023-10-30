@@ -35,23 +35,34 @@ public class Main {
             }
         }
         //data
-        try {
-            System.out.println("Inserisci la data dell'Evento: (formato: yyyy-MM-dd)");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date data = dateFormat.parse(scan.nextLine());
+        Date data = null;
+        validInput = false;
 
-            // Prova a creare l'oggetto Evento
+        //controllo se la data è valida
+        while (!validInput) {
+            System.out.println("Inserisci la data dell'Evento (formato: yyyy-MM-dd):");
+            String dataString = scan.nextLine();
+
+            //controllo se utente mette stringa vuota
+            if (dataString.isEmpty()) {
+                System.out.println("Errore: Devi inserire una data valida!");
+            } else {
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    data = dateFormat.parse(dataString);
+                    validInput = true;
+                } catch (java.text.ParseException e) {
+                    System.out.println("Errore: Formato data non valido!");
+                }
+            }
+        }
+
+        // istanzio il nuovo evento
+        try {
             Evento evento = new Evento(titolo, data, postiTotali);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         }
-
-
-        //creo il nuovo evento
-//        Evento evento = new Evento(titolo, data, postiTotali);
 
         //Chiudo lo scanner
         scan.close();
