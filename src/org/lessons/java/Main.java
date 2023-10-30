@@ -115,8 +115,10 @@ public class Main {
 
                 // aggiungo le disdette
                 try {
-                    evento.disdici(postiDisdetti);
-                    System.out.println("Prenotazioni effettuate con successo!");
+                    int[] result = evento.disdici(postiDisdetti);
+                    int postiPrenotatiDopoDisdette = result[0];
+                    int postiDisponibiliDopoDisdette = result[1];
+                    System.out.println("Disdette effettuate con successo! Hai disdetto " + postiDisdetti + " posto/i. Sono disponibili ancora: " + postiDisponibiliDopoDisdette + " posto/i.");
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }

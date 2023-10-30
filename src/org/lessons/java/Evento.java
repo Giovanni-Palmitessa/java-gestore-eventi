@@ -80,7 +80,7 @@ public class Evento {
         }
     }
 
-    public void disdici(int numDisdette) throws IllegalArgumentException {
+    public int[] disdici(int numDisdette) throws IllegalArgumentException {
         try {
             //controllo se data è valida
             if (data.before(new Date())) {
@@ -96,6 +96,8 @@ public class Evento {
             }
             //se controlli vanno bene rimuovi posti
             postiPrenotati -= numDisdette;
+
+            return new int[] { postiPrenotati, postiTotali - postiPrenotati };
         } catch (NumberFormatException e) {
             throw new NumberFormatException("Errore: Devi inserire un numero valido per le disdette.");
         }
