@@ -26,7 +26,6 @@ public class Evento {
         this.postiPrenotati = 0;
     }
     //Getter e Setter
-
     public String getTitolo() {
         return titolo;
     }
@@ -37,5 +36,13 @@ public class Evento {
 
     public int getPostiPrenotati() {
         return postiPrenotati;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }
