@@ -1,5 +1,6 @@
 package org.lessons.java;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Evento {
@@ -71,6 +72,12 @@ public class Evento {
         }
         //se controlli vanno bene rimuovi posti
         postiPrenotati -= numDisdette;
+    }
 
+    //toString
+    @Override
+    public String toString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(data) + " - " + titolo;
     }
 }
