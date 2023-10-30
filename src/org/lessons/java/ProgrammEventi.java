@@ -1,5 +1,6 @@
 package org.lessons.java;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,4 +34,12 @@ public class ProgrammEventi {
     public int numeroEventi() {
         return listaEventi.size();
     }
+
+    //svuotare tutti gli eventi presenti nella lista
+    public void svuotaEventi() {
+        listaEventi.clear();
+    }
+
+    // ritornare una stringa che mostra il titolo del programma e tutti gli eventi ordinati per data
+    // To Add
 }
