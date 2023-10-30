@@ -12,15 +12,23 @@ public class Evento {
 
     //Costruttore
     public Evento(String titolo, Date data, int postiTotali) throws IllegalArgumentException {
+         if (!isTitoloValid(titolo)) {
+            throw new IllegalArgumentException("Il titolo non può essere una stringa vuota!");
+        }
+        //controllo che i posti Totali siano numero positivo valido
+        if (postiTotali <= 0) {
+            throw new IllegalArgumentException("Il numero dei posti totali deve essere maggiore di 0!");
+        }
+
+        if (!isPostiTotaliValid(postiTotali)) {
+            throw new IllegalArgumentException("Il numero dei posti totali deve essere maggiore di 0!");
+        }
+
         //controllo se data è valida
         if (data.before(new Date())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
         }
 
-        //controllo che i posti Totali siano numero positivo valido
-        if (postiTotali <= 0) {
-            throw new IllegalArgumentException("Il numero dei posti totali deve essere maggiore di 0!");
-        }
         this.titolo = titolo;
         this.data = data;
         this.postiTotali = postiTotali;
@@ -77,6 +85,11 @@ public class Evento {
     // validazione del titolo
     private boolean isTitoloValid(String titolo) {
         return !titolo.isEmpty();
+    }
+
+    // validazione del numero di posti
+    private boolean isPostiTotaliValid(int postiTotali) {
+        return postiTotali > 0;
     }
 
     // validazione della data
