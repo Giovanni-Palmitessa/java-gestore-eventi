@@ -45,4 +45,17 @@ public class Evento {
     public void setData(Date data) {
         this.data = data;
     }
+
+    //Metodi
+    public void prenota(int numPrenotazioni) throws IllegalArgumentException {
+        //controllo se data è valida
+        if (data.before(new Date())) {
+            throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
+        }
+        // controllo se ci sono posti disponibili
+        if (numPrenotazioni > postiTotali - postiPrenotati) {
+            throw new IllegalArgumentException("Non ci sono abbastanza posti disponibili per questo evento!");
+        }
+        postiPrenotati += numPrenotazioni;
+    }
 }
