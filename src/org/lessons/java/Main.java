@@ -91,6 +91,7 @@ public class Main {
             } else {
                 System.out.println("Nessuna prenotazione effettuata.");
             }
+            // chiedo all'utente se vuole disdire un posto
         }
 
 
