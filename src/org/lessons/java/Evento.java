@@ -21,4 +21,17 @@ public class Evento {
         this.data = data;
         this.postiPrenotati = 0;
     }
+    //Getter e Setter
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public int getPostiPrenotati() {
+        return postiPrenotati;
+    }
 }
