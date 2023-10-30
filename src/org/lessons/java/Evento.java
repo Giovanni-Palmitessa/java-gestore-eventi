@@ -74,6 +74,16 @@ public class Evento {
         postiPrenotati -= numDisdette;
     }
 
+    // validazione del titolo
+    private boolean isTitoloValid(String titolo) {
+        return !titolo.isEmpty();
+    }
+
+    // validazione della data
+    private boolean isDataValid(Date data) {
+        return !data.before(new Date());
+    }
+
     //toString
     @Override
     public String toString() {
