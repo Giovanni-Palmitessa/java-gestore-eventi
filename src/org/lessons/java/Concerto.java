@@ -10,7 +10,9 @@ public class Concerto extends Evento{
     private BigDecimal prezzo;
 
     //Costruttore
-    public Concerto(String titolo, Date data, int postiTotali) throws IllegalArgumentException {
+    public Concerto(String titolo, Date data, int postiTotali, LocalTime ora, BigDecimal prezzo) throws IllegalArgumentException {
         super(titolo, data, postiTotali);
+        this.ora = ora;
+        this.prezzo = prezzo;
     }
 }
