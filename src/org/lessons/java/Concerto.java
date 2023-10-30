@@ -15,4 +15,22 @@ public class Concerto extends Evento{
         this.ora = ora;
         this.prezzo = prezzo;
     }
+
+    //Getter e Setter
+
+    public LocalTime getOra() {
+        return ora;
+    }
+
+    public void setOra(LocalTime ora) {
+        this.ora = ora;
+    }
+
+    public BigDecimal getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(BigDecimal prezzo) {
+        this.prezzo = prezzo;
+    }
 }
