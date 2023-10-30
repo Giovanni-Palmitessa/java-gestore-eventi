@@ -40,4 +40,9 @@ public class Concerto extends Evento{
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return getData().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateTimeFormatter);
     }
+
+    public String getOraFormattata() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return ora.format(dateTimeFormatter);
+    }
 }
