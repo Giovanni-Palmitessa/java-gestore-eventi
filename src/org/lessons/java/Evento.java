@@ -81,20 +81,24 @@ public class Evento {
     }
 
     public void disdici(int numDisdette) throws IllegalArgumentException {
-        //controllo se data è valida
-        if (data.before(new Date())) {
-            throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
+        try {
+            //controllo se data è valida
+            if (data.before(new Date())) {
+                throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
+            }
+            // controllo di aver inserito numero disdette valido
+            if (numDisdette <= 0) {
+                throw new IllegalArgumentException("Devi disdire almeno una prenotazione!");
+            }
+            //controllo che ci siano abbastanza prenotazioni
+            if (numDisdette > postiPrenotati) {
+                throw new IllegalArgumentException("Non ci sono abbastanza prenotazioni da disdire!");
+            }
+            //se controlli vanno bene rimuovi posti
+            postiPrenotati -= numDisdette;
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Errore: Devi inserire un numero valido per le disdette.");
         }
-        // controllo di aver inserito numero disdette valido
-        if (numDisdette <= 0) {
-            throw new IllegalArgumentException("Devi disdire almeno una prenotazione!");
-        }
-        //controllo che ci siano abbastanza prenotazioni
-        if (numDisdette > postiPrenotati) {
-            throw new IllegalArgumentException("Non ci sono abbastanza prenotazioni da disdire!");
-        }
-        //se controlli vanno bene rimuovi posti
-        postiPrenotati -= numDisdette;
     }
 
     // validazione del titolo

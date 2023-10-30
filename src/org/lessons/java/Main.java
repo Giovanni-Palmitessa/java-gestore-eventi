@@ -68,9 +68,9 @@ public class Main {
         // dopo aver creato l'evento chiedo se vuole prenotare un posto
         if (evento != null) {
             System.out.println("Vuoi prenotare un posto? (Sì/No)");
-            String risposta = scan.nextLine();
+            String rispostaPrenotazione = scan.nextLine();
             // chiedo quanti posti vuoi prenotare
-            if (risposta.equalsIgnoreCase("Si")) {
+            if (rispostaPrenotazione.equalsIgnoreCase("Si")) {
                 System.out.println("Quanti posti vuoi prenotare?");
                 int postiPrenotati;
 
@@ -91,7 +91,32 @@ public class Main {
             } else {
                 System.out.println("Nessuna prenotazione effettuata.");
             }
+
             // chiedo all'utente se vuole disdire un posto
+            System.out.println("Vuoi disdire un posto? (Sì/No)");
+            String rispostaDisdetta = scan.nextLine();
+            // chiedo quanti posti vuoi disdire
+            if (rispostaDisdetta.equalsIgnoreCase("Si")){
+                System.out.println("Quanti posti vuoi disdire?");
+                int postiDisdetti;
+
+                try {
+                    postiDisdetti = Integer.parseInt(scan.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Errore: Devi inserire un numero valido per le prenotazioni.");
+                    return;
+                }
+
+                // aggiungo le disdette
+                try {
+                    evento.disdici(postiDisdetti);
+                    System.out.println("Prenotazioni effettuate con successo!");
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                System.out.println("Nessuna disdetta effettuata.");
+            }
         }
 
 
