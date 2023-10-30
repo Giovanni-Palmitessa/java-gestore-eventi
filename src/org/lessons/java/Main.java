@@ -1,5 +1,6 @@
 package org.lessons.java;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -18,7 +19,19 @@ public class Main {
         System.out.println("Inserisci la data dell'Evento: (formato: yyyy-mm-dd)");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date data = null;
+        //controllo se la data inserita è corretta
+        try {
+            data = dateFormat.parse(scan.nextLine());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return;
+        }
+        // posti Totali
+        System.out.println("Inserisci il numero di posti totali:");
+        int postiTotali = scan.nextInt();
 
+        //creo il nuovo evento
+        Evento evento = new Evento(titolo, data, postiTotali);
 
         //Chiudo lo scanner
         scan.close();
