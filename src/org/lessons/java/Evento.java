@@ -78,6 +78,10 @@ public class Evento {
         if (data.before(new Date())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
         }
+        // controllo di aver inserito numero disdette valido
+        if (numDisdette <= 0) {
+            throw new IllegalArgumentException("Devi disdire almeno una prenotazione!");
+        }
         //controllo che ci siano abbastanza prenotazioni
         if (numDisdette > postiPrenotati) {
             throw new IllegalArgumentException("Non ci sono abbastanza prenotazioni da disdire!");

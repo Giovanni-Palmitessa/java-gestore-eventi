@@ -58,8 +58,21 @@ public class Main {
         }
 
         // istanzio il nuovo evento
+        Evento evento = null;
         try {
-            Evento evento = new Evento(titolo, data, postiTotali);
+            evento = new Evento(titolo, data, postiTotali);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // dopo aver creato l'evento chiedo quanti posti vuole prenotare
+        System.out.println("Quante prenotazioni vuoi fare?");
+        int postiPrenotati = Integer.parseInt(scan.nextLine());
+
+        //aggiungo le prenotazioni
+        try {
+            evento.prenota(postiPrenotati);
+            System.out.println("Prenotazioni effettuate con successo!");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
