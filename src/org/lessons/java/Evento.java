@@ -10,4 +10,15 @@ public class Evento {
     private String titolo;
     private Date data;
     private int postiPrenotati;
+
+    //Costruttore
+    public Evento(String titolo, Date data) throws IllegalArgumentException {
+        //controllo se data è valida
+        if (data.before(new Date())) {
+            throw new IllegalArgumentException("La data dell'evento non può essere nel passato");
+        }
+        this.titolo = titolo;
+        this.data = data;
+        this.postiPrenotati = 0;
+    }
 }
