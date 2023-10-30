@@ -2,6 +2,7 @@ package org.lessons.java;
 
 import java.math.BigDecimal;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Concerto extends Evento{
@@ -32,5 +33,11 @@ public class Concerto extends Evento{
 
     public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
+    }
+
+    //Metodi
+    public String getDataFormattata() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return getData().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate().format(dateTimeFormatter);
     }
 }
