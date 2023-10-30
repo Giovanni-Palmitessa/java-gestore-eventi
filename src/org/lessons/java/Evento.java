@@ -61,6 +61,10 @@ public class Evento {
         if (data.before(new Date())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato!");
         }
+        //controllo di non aver inserito numero valido
+        if (numPrenotazioni <= 0) {
+            throw new IllegalArgumentException("Devi prenotare almeno un posto!");
+        }
         // controllo se ci sono posti disponibili
         if (numPrenotazioni > postiTotali - postiPrenotati) {
             throw new IllegalArgumentException("Non ci sono abbastanza posti disponibili per questo evento!");
