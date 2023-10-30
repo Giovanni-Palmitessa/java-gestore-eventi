@@ -1,6 +1,7 @@
 package org.lessons.java;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -44,5 +45,16 @@ public class Concerto extends Evento{
     public String getOraFormattata() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         return ora.format(dateTimeFormatter);
+    }
+
+    public String getPrezzoFormattato() {
+        DecimalFormat decimalFormat = new DecimalFormat("0.00€");
+        return decimalFormat.format(prezzo);
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        return getDataFormattata() + " - " + getOraFormattata() + " - " + getTitolo() + " - " + getPrezzoFormattato();
     }
 }
