@@ -71,8 +71,15 @@ public class Main {
             String risposta = scan.nextLine();
             // chiedo quanti posti vuoi prenotare
             if (risposta.equalsIgnoreCase("Si")) {
-                System.out.println("Quante prenotazioni vuoi fare?");
-                int postiPrenotati = Integer.parseInt(scan.nextLine());
+                System.out.println("Quanti posti vuoi prenotare?");
+                int postiPrenotati;
+
+                try {
+                    postiPrenotati = Integer.parseInt(scan.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Errore: Devi inserire un numero valido per le prenotazioni.");
+                    return;
+                }
 
                 //aggiungo le prenotazioni
                 try {
@@ -85,6 +92,7 @@ public class Main {
                 System.out.println("Nessuna prenotazione effettuata.");
             }
         }
+
 
         //Chiudo lo scanner
         scan.close();
