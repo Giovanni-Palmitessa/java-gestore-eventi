@@ -1,7 +1,9 @@
 package org.lessons.java;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -127,6 +129,10 @@ public class Main {
             }
         }
 
+        //Test per concerto
+        Concerto concerto1 = new Concerto("Concerto 1", new Date(), 100, LocalTime.of(20, 0), new BigDecimal("50.00"));
+
+        System.out.println("Concerto 1: " + concerto1.toString());
 
         //Chiudo lo scanner
         scan.close();
