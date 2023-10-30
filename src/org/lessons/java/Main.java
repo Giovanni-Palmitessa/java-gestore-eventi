@@ -16,8 +16,24 @@ public class Main {
         System.out.println("Inserisci il titolo dell'Evento: ");
         String titolo = scan.nextLine();
         // posti Totali
-        System.out.println("Inserisci il numero di posti totali:");
-        int postiTotali = Integer.parseInt(scan.nextLine());
+        int postiTotali = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.println("Inserisci il numero di posti totali:");
+            String postiTotaliInput = scan.nextLine();
+
+            if (postiTotaliInput.isEmpty()) {
+                System.out.println("Errore: Devi inserire un numero valido di posti totali!");
+            } else {
+                try {
+                    postiTotali = Integer.parseInt(postiTotaliInput);
+                    validInput = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("Errore: Il numero di posti totali deve essere un numero valido!");
+                }
+            }
+        }
         //data
         try {
             System.out.println("Inserisci la data dell'Evento: (formato: yyyy-MM-dd)");
