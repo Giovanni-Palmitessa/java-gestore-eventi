@@ -25,7 +25,11 @@ public class Main {
         } catch (ParseException e) {
             e.printStackTrace();
             return;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
         }
+
         // posti Totali
         System.out.println("Inserisci il numero di posti totali:");
         int postiTotali = scan.nextInt();
